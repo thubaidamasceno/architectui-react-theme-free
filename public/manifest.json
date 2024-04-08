@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "FP-MIED",
+  "name": "Ferramenta de Produtividade do MIED",
   "icons": [
     {
       "src": "favicon.ico",

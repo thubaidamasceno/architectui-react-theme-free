@@ -32,7 +32,7 @@ export default class FormClipboard extends React.Component {
   };
 
   onClick = ({ target: { innerHTML } }) => {
-    console.log(`Clicked on "${innerHTML}"!`); // eslint-disable-line
+    // console.log(`Clicked on "${innerHTML}"!`); // eslint-disable-line
   };
 
   onCopy = () => {

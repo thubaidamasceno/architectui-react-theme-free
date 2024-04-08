@@ -63,10 +63,6 @@ import TreeView from "./TreeView/";
 
 import GuidedToursExample from "./GuidedTours/";
 
-// Maps
-
-import MapsExample from "./Maps/";
-
 // Pagination
 
 import PaginationExamples from "./Pagination";
@@ -142,10 +138,6 @@ const Components = ({ match }) => (
           {/* Modals */}
 
           <Route path={`${match.url}/modals`} component={ModalsExample} />
-
-          {/* Maps */}
-
-          <Route path={`${match.url}/maps`} component={MapsExample} />
 
           {/* Image Crop */}
 
