@@ -1000,7 +1000,7 @@ export default class SalesDashboard1 extends Component {
                     <CardHeader className="card-header-tab">
                       <div className="card-header-title font-size-lg text-capitalize fw-normal">
                         <i className="header-icon lnr-dice me-3 text-muted opacity-6"> {" "} </i>
-                        Easy Dynamic Tables
+                        Easy Dynamic Tablesz
                       </div>
                       <div className="btn-actions-pane-right actions-icon-btn">
                         <UncontrolledButtonDropdown>

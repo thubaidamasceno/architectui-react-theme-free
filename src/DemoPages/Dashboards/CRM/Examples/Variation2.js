@@ -54,6 +54,117 @@ import avatar1 from "../../../../assets/utils/images/avatars/1.jpg";
 import avatar2 from "../../../../assets/utils/images/avatars/2.jpg";
 import avatar3 from "../../../../assets/utils/images/avatars/3.jpg";
 
+import { useState, useMemo, useCallback } from 'react';
+import { AgGridReact } from 'ag-grid-react'; // React Grid Logic
+
+// import "ag-grid-community/styles/ag-grid.css"; // Core CSS
+// import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
+
+import 'ag-grid-enterprise/styles/ag-grid.css'
+import 'ag-grid-enterprise/styles/ag-theme-balham.css'
+{/* */ }
+{/* */ }
+
+const GridExample = () => {
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
+  const [rowData, setRowData] = useState();
+  const [columnDefs, setColumnDefs] = useState([
+    { field: 'athlete', pinned: 'left' },
+    { field: 'age', pinned: 'left' },
+    {
+      field: 'country',
+      colSpan: (params) => {
+        const country = params.data.country;
+        if (country === 'Russia') {
+          // have all Russia age columns width 2
+          return 2;
+        } else if (country === 'United States') {
+          // have all United States column width 4
+          return 4;
+        } else {
+          // all other rows should be just normal
+          return 1;
+        }
+      },
+    },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
+  ]);
+  const defaultColDef = useMemo(() => {
+    return {
+      width: 150,
+    };
+  }, []);
+
+  const onGridReady = useCallback((params) => {
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
+      .then((resp) => resp.json())
+      .then((data) => setRowData(data));
+  }, []);
+
+  return (
+    <div style={containerStyle}>
+      <div
+        style={gridStyle}
+        className={
+          "ag-theme-balham"
+        }
+      >
+        <AgGridReact
+          rowData={rowData}
+          columnDefs={columnDefs}
+          defaultColDef={defaultColDef}
+          onGridReady={onGridReady}
+        />
+      </div>
+    </div>
+  );
+};
+const GridExamplex = () => {
+  // Row Data: The data to be displayed.
+  const [rowData, setRowData] = useState([
+    { mission: "Voyager", company: "NASA", location: "Cape Canaveral", date: "1977-09-05", rocket: "Titan-Centaur ", price: 86580000, successful: true },
+    { mission: "Apollo 13", company: "NASA", location: "Kennedy Space Center", date: "1970-04-11", rocket: "Saturn V", price: 3750000, successful: false },
+    { mission: "Falcon 9", company: "SpaceX", location: "Cape Canaveral", date: "2015-12-22", rocket: "Falcon 9", price: 9750000, successful: true }
+  ]);
+
+  // Column Definitions: Defines & controls grid columns.
+  const [colDefs, setColDefs] = useState([
+    { field: "mission" },
+    { field: "company" },
+    { field: "location" },
+    { field: "date" },
+    { field: "price" },
+    { field: "successful" },
+    { field: "rocket" }
+  ]);
+
+  return (
+    // Container
+    <div
+
+      className={
+        "ag-theme-balham"
+      }
+      style={{ width: '800px', height: '600px' }}
+    >
+      {/* The AG Grid component */}
+      <AgGridReact
+        columnDefs={colDefs}
+        rowData={rowData}
+      // columnDefs={colDefs} 
+      />
+    </div>
+  )
+
+}
+
 const data55 = [
   { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
   { name: "Page B", uv: 3000, pv: 1398, amt: 2210 },
@@ -204,7 +315,7 @@ export default class CRMDashboard2 extends Component {
         name: "Visits",
         selector: row => row.visits,
         sortable: true,
-        },
+      },
     ];
     return (
       <Fragment>
@@ -228,7 +339,7 @@ export default class CRMDashboard2 extends Component {
                         </div>
                       </div>
                       <div className="widget-progress-wrapper">
-                        <Progress className="progress-bar-sm" color="primary" value="71"/>
+                        <Progress className="progress-bar-sm" color="primary" value="71" />
                         <div className="progress-sub-label">
                           <div className="sub-label-left">YoY Growth</div>
                           <div className="sub-label-right">100%</div>
@@ -250,7 +361,7 @@ export default class CRMDashboard2 extends Component {
                         </div>
                       </div>
                       <div className="widget-progress-wrapper">
-                        <Progress className="progress-bar-sm progress-bar-animated-alt" color="danger" value="85"/>
+                        <Progress className="progress-bar-sm progress-bar-animated-alt" color="danger" value="85" />
                         <div className="progress-sub-label">
                           <div className="sub-label-left">Sales</div>
                           <div className="sub-label-right">100%</div>
@@ -274,7 +385,7 @@ export default class CRMDashboard2 extends Component {
                         </div>
                       </div>
                       <div className="widget-progress-wrapper">
-                        <Progress className="progress-bar-sm progress-bar-animated-alt" color="success" value="46"/>
+                        <Progress className="progress-bar-sm progress-bar-animated-alt" color="success" value="46" />
                         <div className="progress-sub-label">
                           <div className="sub-label-left">Twitter Progress</div>
                           <div className="sub-label-right">100%</div>
@@ -296,7 +407,7 @@ export default class CRMDashboard2 extends Component {
                         </div>
                       </div>
                       <div className="widget-progress-wrapper">
-                        <Progress className="progress-bar-sm progress-bar-animated-alt" color="info" value="54"/>
+                        <Progress className="progress-bar-sm progress-bar-animated-alt" color="info" value="54" />
                         <div className="progress-sub-label">
                           <div className="sub-label-left">Expenses</div>
                           <div className="sub-label-right">100%</div>
@@ -318,7 +429,7 @@ export default class CRMDashboard2 extends Component {
                                 <div className="widget-chart-flex">
                                   <div className="fsize-4">
                                     <small className="opacity-5">$</small>
-                                    <CountUp start={0} end={874} separator="" decimals={0} decimal="" prefix="" duration="10"/>
+                                    <CountUp start={0} end={874} separator="" decimals={0} decimal="" prefix="" duration="10" />
                                   </div>
                                 </div>
                               </div>
@@ -335,7 +446,7 @@ export default class CRMDashboard2 extends Component {
                                     strokeWidth: 3,
                                     stroke: "#3ac47d",
                                     fill: "none",
-                                  }}/>
+                                  }} />
                               </Sparklines>
                             </Col>
                           </Row>
@@ -351,7 +462,7 @@ export default class CRMDashboard2 extends Component {
                                 <div className="widget-chart-flex">
                                   <div className="fsize-4">
                                     <small className="opacity-5">$</small>
-                                    <CountUp start={0} end={1283} separator="" decimals={0} decimal="" prefix="" duration="10"/>
+                                    <CountUp start={0} end={1283} separator="" decimals={0} decimal="" prefix="" duration="10" />
                                   </div>
                                 </div>
                               </div>
@@ -368,7 +479,7 @@ export default class CRMDashboard2 extends Component {
                                     strokeWidth: 3,
                                     stroke: "#545cd8",
                                     fill: "none",
-                                  }}/>
+                                  }} />
                               </Sparklines>
                             </Col>
                           </Row>
@@ -384,7 +495,7 @@ export default class CRMDashboard2 extends Component {
                                 <div className="widget-chart-flex">
                                   <div className="fsize-4">
                                     <small className="opacity-5">$</small>
-                                    <CountUp start={0} end={1286} separator="" decimals={0} decimal="" prefix="" duration="10"/>
+                                    <CountUp start={0} end={1286} separator="" decimals={0} decimal="" prefix="" duration="10" />
                                   </div>
                                 </div>
                               </div>
@@ -401,7 +512,7 @@ export default class CRMDashboard2 extends Component {
                                     strokeWidth: 3,
                                     stroke: "#f7b924",
                                     fill: "none",
-                                  }}/>
+                                  }} />
                               </Sparklines>
                             </Col>
                           </Row>
@@ -417,7 +528,7 @@ export default class CRMDashboard2 extends Component {
                                 <div className="widget-chart-flex">
                                   <div className="fsize-4">
                                     <small className="opacity-5">$</small>
-                                    <CountUp start={0} end={564} separator="" decimals={0} decimal="" prefix="" duration="10"/>
+                                    <CountUp start={0} end={564} separator="" decimals={0} decimal="" prefix="" duration="10" />
                                   </div>
                                 </div>
                               </div>
@@ -434,7 +545,7 @@ export default class CRMDashboard2 extends Component {
                                     strokeWidth: 3,
                                     stroke: "#d92550",
                                     fill: "none",
-                                  }}/>
+                                  }} />
                               </Sparklines>
                             </Col>
                           </Row>
@@ -525,7 +636,7 @@ export default class CRMDashboard2 extends Component {
                                       </div>
                                     </div>
                                     <div className="widget-content-right w-100">
-                                      <Progress className="progress-bar-xs" color="alternate" value="71"/>
+                                      <Progress className="progress-bar-xs" color="alternate" value="71" />
                                     </div>
                                   </div>
                                   <div className="widget-content-left fsize-1">
@@ -546,7 +657,7 @@ export default class CRMDashboard2 extends Component {
                                       </div>
                                     </div>
                                     <div className="widget-content-right w-100">
-                                      <Progress className="progress-bar-xs" color="danger" value="71"/>
+                                      <Progress className="progress-bar-xs" color="danger" value="71" />
                                     </div>
                                   </div>
                                   <div className="widget-content-left fsize-1">
@@ -564,13 +675,13 @@ export default class CRMDashboard2 extends Component {
                             <AreaChart data={data22} margin={{ top: -25, right: 0, left: 0, bottom: 0 }}>
                               <defs>
                                 <linearGradient id="colorPv2" x1="0" y1="0" x2="0" y2="1">
-                                  <stop offset="10%" stopColor="#f7b924" stopOpacity={0.7}/>
-                                  <stop offset="90%" stopColor="#f7b924" stopOpacity={0}/>
+                                  <stop offset="10%" stopColor="#f7b924" stopOpacity={0.7} />
+                                  <stop offset="90%" stopColor="#f7b924" stopOpacity={0} />
                                 </linearGradient>
                               </defs>
                               <Tooltip />
                               <Area type="monotoneX" dataKey="uv" stroke="#f7b924" strokeWidth={2}
-                                fillOpacity={1} fill="url(#colorPv2)"/>
+                                fillOpacity={1} fill="url(#colorPv2)" />
                             </AreaChart>
                           </ResponsiveContainer>
                         </div>
@@ -633,7 +744,7 @@ export default class CRMDashboard2 extends Component {
                                     </div>
                                   </div>
                                   <div className="widget-progress-wrapper mt-1">
-                                    <Progress className="progress-bar-sm progress-bar-animated-alt" color="danger" value="83"/>
+                                    <Progress className="progress-bar-sm progress-bar-animated-alt" color="danger" value="83" />
                                   </div>
                                 </div>
                               </div>
@@ -654,7 +765,7 @@ export default class CRMDashboard2 extends Component {
                                     </div>
                                   </div>
                                   <div className="widget-progress-wrapper mt-1">
-                                    <Progress className="progress-bar-sm progress-bar-animated-alt" color="alternate" value="48"/>
+                                    <Progress className="progress-bar-sm progress-bar-animated-alt" color="alternate" value="48" />
                                   </div>
                                 </div>
                               </div>
@@ -666,13 +777,13 @@ export default class CRMDashboard2 extends Component {
                             <AreaChart data={data2} margin={{ top: -25, right: 0, left: 0, bottom: 0 }}>
                               <defs>
                                 <linearGradient id="colorPv2" x1="0" y1="0" x2="0" y2="1">
-                                  <stop offset="10%" stopColor="var(--alternate)" stopOpacity={0.7}/>
-                                  <stop offset="90%" stopColor="var(--alternate)" stopOpacity={0}/>
+                                  <stop offset="10%" stopColor="var(--alternate)" stopOpacity={0.7} />
+                                  <stop offset="90%" stopColor="var(--alternate)" stopOpacity={0} />
                                 </linearGradient>
                               </defs>
                               <Tooltip />
                               <Area type="monotoneX" dataKey="uv" stroke="var(--alternate)"
-                                strokeWidth={2} fillOpacity={1} fill="url(#colorPv2)"/>
+                                strokeWidth={2} fillOpacity={1} fill="url(#colorPv2)" />
                             </AreaChart>
                           </ResponsiveContainer>
                         </div>
@@ -685,7 +796,7 @@ export default class CRMDashboard2 extends Component {
                 <CardHeader className="card-header-tab">
                   <div className="card-header-title font-size-lg text-capitalize fw-normal">
                     <i className="header-icon lnr-dice me-3 text-muted opacity-6"> {" "} </i>
-                    Easy Dynamic Tables
+                    Easy Dynamic Tablesy
                   </div>
                   <div className="btn-actions-pane-right actions-icon-btn">
                     <UncontrolledButtonDropdown>
@@ -720,12 +831,96 @@ export default class CRMDashboard2 extends Component {
                   </div>
                 </CardHeader>
                 <CardBody>
-                <DataTable data={data}
+                  <GridExamplex />
+                </CardBody>
+              </Card>
+              <Card className="main-card mb-3">
+                <CardHeader className="card-header-tab">
+                  <div className="card-header-title font-size-lg text-capitalize fw-normal">
+                    <i className="header-icon lnr-dice me-3 text-muted opacity-6"> {" "} </i>
+                    Easy Dynamic Tablesw
+                  </div>
+                  <div className="btn-actions-pane-right actions-icon-btn">
+                    <UncontrolledButtonDropdown>
+                      <DropdownToggle className="btn-icon btn-icon-only" color="link">
+                        <i className="pe-7s-menu btn-icon-wrapper" />
+                      </DropdownToggle>
+                      <DropdownMenu className="dropdown-menu-shadow dropdown-menu-hover-link">
+                        <DropdownItem header>Header</DropdownItem>
+                        <DropdownItem>
+                          <i className="dropdown-icon lnr-inbox"> </i>
+                          <span>Menus</span>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <i className="dropdown-icon lnr-file-empty"> </i>
+                          <span>Settings</span>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <i className="dropdown-icon lnr-book"> </i>
+                          <span>Actions</span>
+                        </DropdownItem>
+                        <DropdownItem divider />
+                        <div className="p-3 text-end">
+                          <Button className="me-2 btn-shadow btn-sm" color="link">
+                            View Details
+                          </Button>
+                          <Button className="me-2 btn-shadow btn-sm" color="primary">
+                            Action
+                          </Button>
+                        </div>
+                      </DropdownMenu>
+                    </UncontrolledButtonDropdown>
+                  </div>
+                </CardHeader>
+                <CardBody>
+                  <DataTable data={data}
                     columns={columns}
                     pagination
                     fixedHeader
                     fixedHeaderScrollHeight="400px"
                   />
+
+                </CardBody>
+              </Card>
+              <Card className="main-card mb-3">
+                <CardHeader className="card-header-tab">
+                  <div className="card-header-title font-size-lg text-capitalize fw-normal">
+                    <i className="header-icon lnr-dice me-3 text-muted opacity-6"> {" "} </i>
+                    Easy Dynamic Tablesv
+                  </div>
+                  <div className="btn-actions-pane-right actions-icon-btn">
+                    <UncontrolledButtonDropdown>
+                      <DropdownToggle className="btn-icon btn-icon-only" color="link">
+                        <i className="pe-7s-menu btn-icon-wrapper" />
+                      </DropdownToggle>
+                      <DropdownMenu className="dropdown-menu-shadow dropdown-menu-hover-link">
+                        <DropdownItem header>Header</DropdownItem>
+                        <DropdownItem>
+                          <i className="dropdown-icon lnr-inbox"> </i>
+                          <span>Menus</span>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <i className="dropdown-icon lnr-file-empty"> </i>
+                          <span>Settings</span>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <i className="dropdown-icon lnr-book"> </i>
+                          <span>Actions</span>
+                        </DropdownItem>
+                        <DropdownItem divider />
+                        <div className="p-3 text-end">
+                          <Button className="me-2 btn-shadow btn-sm" color="link">
+                            View Details
+                          </Button>
+                          <Button className="me-2 btn-shadow btn-sm" color="primary">
+                            Action
+                          </Button>
+                        </div>
+                      </DropdownMenu>
+                    </UncontrolledButtonDropdown>
+                  </div>
+                </CardHeader>
+                <CardBody><div style={{ width: '100%', height: '800px', }}><GridExample /></div>
                 </CardBody>
               </Card>
               <Row>
@@ -748,7 +943,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-chart-flex">
                                     <div className="text-primary">
                                       <CountUp start={0} end={348} separator="" decimals={0}
-                                        decimal="," prefix="" duration="10"/>
+                                        decimal="," prefix="" duration="10" />
                                     </div>
                                   </div>
                                 </div>
@@ -765,7 +960,7 @@ export default class CRMDashboard2 extends Component {
                                   }}>
                                   <Tooltip />
                                   <Area type="monotoneX" dataKey="uv" stroke="#545cd8"
-                                    strokeOpacity=".8" strokeWidth={3} fill="#545cd8" fillOpacity=".08"/>
+                                    strokeOpacity=".8" strokeWidth={3} fill="#545cd8" fillOpacity=".08" />
                                 </AreaChart>
                               </ResponsiveContainer>
                             </div>
@@ -789,7 +984,7 @@ export default class CRMDashboard2 extends Component {
                                 <div className="widget-numbers">
                                   <div className="widget-chart-flex">
                                     <div className="text-danger">
-                                      <CountUp start={0} end={425} separator="" decimals={0} decimal="," prefix="" duration="10"/>
+                                      <CountUp start={0} end={425} separator="" decimals={0} decimal="," prefix="" duration="10" />
                                     </div>
                                   </div>
                                 </div>
@@ -806,7 +1001,7 @@ export default class CRMDashboard2 extends Component {
                                   }}>
                                   <Tooltip />
                                   <Area type="monotoneX" dataKey="uv" stroke="#d92550" strokeOpacity=".8"
-                                    strokeWidth={3} fill="#d92550" fillOpacity=".08"/>
+                                    strokeWidth={3} fill="#d92550" fillOpacity=".08" />
                                 </AreaChart>
                               </ResponsiveContainer>
                             </div>
@@ -859,7 +1054,7 @@ export default class CRMDashboard2 extends Component {
                                     <div className="widget-chart-flex">
                                       <div>
                                         <small className="opacity-5">$</small>
-                                        <CountUp start={0} end={368} separator="" decimals={0} decimal="," prefix="" duration="10"/>
+                                        <CountUp start={0} end={368} separator="" decimals={0} decimal="," prefix="" duration="10" />
                                       </div>
                                       <div className="widget-title ms-2 opacity-5 font-size-lg text-muted">
                                         Total Leads
@@ -878,7 +1073,7 @@ export default class CRMDashboard2 extends Component {
                                       bottom: 0,
                                     }}>
                                     <Tooltip />
-                                    <Area type="monotoneX" dataKey="uv" strokeWidth={0} fill="#30b1ff"/>
+                                    <Area type="monotoneX" dataKey="uv" strokeWidth={0} fill="#30b1ff" />
                                   </AreaChart>
                                 </ResponsiveContainer>
                               </div>
@@ -894,7 +1089,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar1} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar1} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -909,7 +1104,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={129} separator="" decimals={0} decimal="." prefix="" duration="10"/>
+                                          <CountUp start={0} end={129} separator="" decimals={0} decimal="." prefix="" duration="10" />
                                           <small className="text-danger ps-2">
                                             <FontAwesomeIcon icon={faAngleDown} />
                                           </small>
@@ -922,7 +1117,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar2} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar2} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -937,7 +1132,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={54} separator="" decimals={0} decimal="." prefix="" duration="15"/>
+                                          <CountUp start={0} end={54} separator="" decimals={0} decimal="." prefix="" duration="15" />
                                           <small className="text-success ps-2">
                                             <FontAwesomeIcon icon={faAngleUp} />
                                           </small>
@@ -950,7 +1145,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar3} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar3} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -965,7 +1160,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={431} separator="" decimals={0} decimal="." prefix="" duration="20"/>
+                                          <CountUp start={0} end={431} separator="" decimals={0} decimal="." prefix="" duration="20" />
                                           <small className="text-warning ps-2">
                                             <FontAwesomeIcon icon={faDotCircle} />
                                           </small>
@@ -978,7 +1173,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar1} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar1} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -993,7 +1188,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={129} separator="" decimals={0} decimal="." prefix="" duration="10"/>
+                                          <CountUp start={0} end={129} separator="" decimals={0} decimal="." prefix="" duration="10" />
                                           <small className="text-danger ps-2">
                                             <FontAwesomeIcon icon={faAngleDown} />
                                           </small>
@@ -1006,7 +1201,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar2} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar2} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -1021,7 +1216,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={54} separator="" decimals={0} decimal="." prefix="" duration="15"/>
+                                          <CountUp start={0} end={54} separator="" decimals={0} decimal="." prefix="" duration="15" />
                                           <small className="text-success ps-2">
                                             <FontAwesomeIcon icon={faAngleUp} />
                                           </small>
@@ -1043,7 +1238,7 @@ export default class CRMDashboard2 extends Component {
                                     <div className="widget-chart-flex">
                                       <div>
                                         <small className="opacity-5">$</small>
-                                        <CountUp start={0} end={851} separator="" decimals={0} decimal="," prefix="" duration="10"/>
+                                        <CountUp start={0} end={851} separator="" decimals={0} decimal="," prefix="" duration="10" />
                                       </div>
                                       <div className="widget-title ms-2 opacity-5 font-size-lg text-muted">
                                         Sales Total
@@ -1061,7 +1256,7 @@ export default class CRMDashboard2 extends Component {
                                       left: 10,
                                       bottom: 0,
                                     }}>
-                                    <Line type="monotone" dataKey="pv" stroke="#3ac47d" strokeWidth={3}/>
+                                    <Line type="monotone" dataKey="pv" stroke="#3ac47d" strokeWidth={3} />
                                   </LineChart>
                                 </ResponsiveContainer>
                               </div>
@@ -1077,7 +1272,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar1} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar1} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -1092,7 +1287,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={129} separator="" decimals={0} decimal="." prefix="" duration="10"/>
+                                          <CountUp start={0} end={129} separator="" decimals={0} decimal="." prefix="" duration="10" />
                                           <small className="text-danger ps-2">
                                             <FontAwesomeIcon icon={faAngleDown} />
                                           </small>
@@ -1105,7 +1300,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar2} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar2} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -1120,7 +1315,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={54} separator="" decimals={0} decimal="." prefix="" duration="15"/>
+                                          <CountUp start={0} end={54} separator="" decimals={0} decimal="." prefix="" duration="15" />
                                           <small className="text-success ps-2">
                                             <FontAwesomeIcon icon={faAngleUp} />
                                           </small>
@@ -1133,7 +1328,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar3} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar3} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -1148,7 +1343,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={431} separator="" decimals={0} decimal="." prefix="" duration="20"/>
+                                          <CountUp start={0} end={431} separator="" decimals={0} decimal="." prefix="" duration="20" />
                                           <small className="text-warning ps-2">
                                             <FontAwesomeIcon icon={faDotCircle} />
                                           </small>
@@ -1161,7 +1356,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar1} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar1} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -1176,7 +1371,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={129} separator="" decimals={0} decimal="." prefix="" duration="10"/>
+                                          <CountUp start={0} end={129} separator="" decimals={0} decimal="." prefix="" duration="10" />
                                           <small className="text-danger ps-2">
                                             <FontAwesomeIcon icon={faAngleDown} />
                                           </small>
@@ -1189,7 +1384,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar2} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar2} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -1204,7 +1399,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={54} separator="" decimals={0} decimal="." prefix="" duration="15"/>
+                                          <CountUp start={0} end={54} separator="" decimals={0} decimal="." prefix="" duration="15" />
                                           <small className="text-success ps-2">
                                             <FontAwesomeIcon icon={faAngleUp} />
                                           </small>
@@ -1217,7 +1412,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar1} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar1} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -1232,7 +1427,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={129} separator="" decimals={0} decimal="." prefix="" duration="10"/>
+                                          <CountUp start={0} end={129} separator="" decimals={0} decimal="." prefix="" duration="10" />
                                           <small className="text-danger ps-2">
                                             <FontAwesomeIcon icon={faAngleDown} />
                                           </small>
@@ -1245,7 +1440,7 @@ export default class CRMDashboard2 extends Component {
                                   <div className="widget-content p-0">
                                     <div className="widget-content-wrapper">
                                       <div className="widget-content-left me-3">
-                                        <img width={42} className="rounded-circle" src={avatar2} alt=""/>
+                                        <img width={42} className="rounded-circle" src={avatar2} alt="" />
                                       </div>
                                       <div className="widget-content-left">
                                         <div className="widget-heading">
@@ -1260,7 +1455,7 @@ export default class CRMDashboard2 extends Component {
                                           <small className="opacity-5 pe-1">
                                             $
                                           </small>
-                                          <CountUp start={0} end={54} separator="" decimals={0} decimal="." prefix="" duration="15"/>
+                                          <CountUp start={0} end={54} separator="" decimals={0} decimal="." prefix="" duration="15" />
                                           <small className="text-success ps-2">
                                             <FontAwesomeIcon icon={faAngleUp} />
                                           </small>
