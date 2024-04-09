@@ -5,6 +5,13 @@ export const UpgradeNav = [
         to: 'https://dashboardpack.com/theme-details/architectui-dashboard-react-pro/',
     },
 ];
+export const ReservasNav = [
+    {
+        icon: 'pe-7s-rocket',
+        label: 'Dashboard Reservas',
+        to: '#/dashboards/reservas',
+    },
+];
 export const MainNav = [
     {
         icon: 'pe-7s-rocket',

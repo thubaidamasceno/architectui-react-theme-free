@@ -7,6 +7,7 @@ import AnalyticsDashboard from "./Analytics/";
 import SalesDashboard from "./Sales/";
 import CommerceDashboard from "./Commerce/";
 import CRMDashboard from "./CRM/";
+import ReservasDashboard from "./Reservas/";
 import MinimalDashboard1 from "./Minimal/Variation1";
 import MinimalDashboard2 from "./Minimal/Variation2";
 
@@ -23,7 +24,10 @@ const Dashboards = ({ match }) => (
   <Fragment>
     <ThemeOptions />
     <AppHeader />
-    <div className="app-main">
+    <div 
+    className="app-main" 
+    // style={{height:"100hv"}}
+    >
       <AppSidebar />
       <div className="app-main__outer">
         <div className="app-main__inner">
@@ -31,6 +35,7 @@ const Dashboards = ({ match }) => (
           <Route path={`${match.url}/sales`} component={SalesDashboard} />
           <Route path={`${match.url}/commerce`} component={CommerceDashboard} />
           <Route path={`${match.url}/crm`} component={CRMDashboard} />
+          <Route path={`${match.url}/reservas`} component={ReservasDashboard} />
           <Route path={`${match.url}/minimal-dashboard-1`} component={MinimalDashboard1}/>
           <Route path={`${match.url}/minimal-dashboard-2`} component={MinimalDashboard2}/>
         </div>
