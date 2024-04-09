@@ -9,7 +9,9 @@ import "./assets/base.scss";
 import Main from "./DemoPages/Main";
 import configureStore from "./config/configureStore";
 import { Provider } from "react-redux";
+import {PORT, SITE,API_PORT, rh, rt} from './agent'
 
+console.log({SITE,PORT, API_PORT})
 const store = configureStore();
 const rootElement = document.getElementById("root");
 

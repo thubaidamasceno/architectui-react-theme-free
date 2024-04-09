@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import cx from 'classnames';
 
 import {
@@ -38,12 +38,245 @@ import sideBar10 from '../../assets/utils/images/sidebar/city5.jpg';
 
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
     faCog,
     faCheck
 } from '@fortawesome/free-solid-svg-icons'
+
+import { useState } from 'react';
+import { db } from '../../db';
+import Dexie from "dexie";
+import { useLiveQuery } from "dexie-react-hooks";
+import { rh, rt } from '../../agent'
+
+function AddFriendForm({ defaultAge } = { defaultAge: 21 }) {
+    const [name, setName] = useState('');
+    const [age, setAge] = useState(defaultAge);
+    const [status, setStatus] = useState('');
+
+    async function addFriend() {
+        try {
+            // Add the new friend!
+            const id = await db.friends.add({
+                name,
+                age
+            });
+
+            setStatus(`Friend ${name} successfully added. Got id ${id}`);
+            setName('');
+            setAge(defaultAge);
+        } catch (error) {
+            setStatus(`Failed to add ${name}: ${error}`);
+        }
+    }
+
+    return (
+        <>
+            <p>{status}</p>
+            Name:
+            <input
+                type="text"
+                value={name}
+                onChange={(ev) => setName(ev.target.value)}
+            />
+            Age:
+            <input
+                type="number"
+                value={age}
+                onChange={(ev) => setAge(Number(ev.target.value))}
+            />
+            <button onClick={addFriend}>Add</button>
+        </>
+    );
+}
+function FriendList({ minAge, maxAge }) {
+    const friends = useLiveQuery(
+        async () => {
+            //
+            // Query Dexie's API
+            //
+            const friends = await db.friends
+                .where('age')
+                .between(minAge, maxAge)
+                .toArray();
+
+            // Return result
+            return friends;
+        },
+        // specify vars that affect query:
+        [minAge, maxAge]
+    );
+
+    return (
+        <ul>
+            {friends?.map((friend) => (
+                <li key={friend.id}>
+                    {friend.name}, {friend.age}
+                </li>
+            ))}
+        </ul>
+    );
+}
+/** Check if storage is persisted already.
+  @returns {Promise<boolean>} Promise resolved with true if current origin is
+  using persistent storage, false if not, and undefined if the API is not
+  present.
+*/
+async function isStoragePersisted() {
+    return await navigator.storage && navigator.storage.persisted ?
+        navigator.storage.persisted() :
+        undefined;
+}
+
+/** Tries to convert to persisted storage.
+  @returns {Promise<boolean>} Promise resolved with true if successfully
+  persisted the storage, false if not, and undefined if the API is not present.
+*/
+async function persist() {
+    return await navigator.storage && navigator.storage.persist ?
+        navigator.storage.persist() :
+        undefined;
+}
+
+/** Queries available disk quota.
+  @see https://developer.mozilla.org/en-US/docs/Web/API/StorageEstimate
+  @returns {Promise<{quota: number, usage: number}>} Promise resolved with
+  {quota: number, usage: number} or undefined.
+*/
+async function showEstimatedQuota() {
+    return await navigator.storage && navigator.storage.estimate ?
+        navigator.storage.estimate() :
+        undefined;
+}
+
+/** Tries to persist storage without ever prompting user.
+  @returns {Promise<string>}
+    "never" In case persisting is not ever possible. Caller don't bother
+      asking user for permission.
+    "prompt" In case persisting would be possible if prompting user first.
+    "persisted" In case this call successfully silently persisted the storage,
+      or if it was already persisted.
+*/
+async function tryPersistWithoutPromtingUser() {
+    if (!navigator.storage || !navigator.storage.persisted) {
+        return "never";
+    }
+    let persisted = await navigator.storage.persisted();
+    if (persisted) {
+        return "persisted";
+    }
+    if (!navigator.permissions || !navigator.permissions.query) {
+        return "prompt"; // It MAY be successful to prompt. Don't know.
+    }
+    const permission = await navigator.permissions.query({
+        name: "persistent-storage"
+    });
+    if (permission.state === "granted") {
+        persisted = await navigator.storage.persist();
+        if (persisted) {
+            return "persisted";
+        } else {
+            throw new Error("Failed to persist");
+        }
+    }
+    if (permission.state === "prompt") {
+        return "prompt";
+    }
+    return "never";
+}
+
+async function initStoragePersistence() {
+    const persist = await tryPersistWithoutPromtingUser();
+    switch (persist) {
+        case "never":
+            console.log("Not possible to persist storage");
+            break;
+        case "persisted":
+            console.log("Successfully persisted storage silently");
+            break;
+        case "prompt":
+            console.log("Not persisted, but we may prompt user when we want to.");
+            break;
+    }
+}
+
+function DatabaseUpdater() {
+
+    const [label1, set_label1] = useState("");
+
+    async function localDBupdate() {
+        try {
+
+            const materiais = await rt(rh('get', `/json1/Materiais`)).then((res, err) => {
+                if (!err) {
+                    return res;
+                } else {
+                    console.error("erro de acesso à API");
+                    return null;
+                }
+            })
+
+            const col = materiais['columns']
+            const data = materiais['data']?.map((row) => row?.reduce((obj, val, idx) => {
+                obj[col[idx]] = val;
+                return obj;
+            }, {}))
+
+            try {
+                const lastKey = await db.Materiais.bulkPut(data);
+
+                isStoragePersisted().then(async isPersisted => {
+                    if (isPersisted) {
+                        console.log(":) Storage is successfully persisted.");
+                    } else {
+                        console.log(":( Storage is not persisted.");
+                        console.log("Trying to persist..:");
+                        if (await persist()) {
+                            console.log(":) We successfully turned the storage to be persisted.");
+                        } else {
+                            console.log(":( Failed to make storage persisted");
+                        }
+                    }
+                })
+                set_label1(`Dados Sincronizados. Lastkey:${lastKey}`);
+
+            } catch (e) {
+                console.error(e);
+            };
+
+        } catch (error) {
+            set_label1(`Erro: ${error}`);
+        }
+    }
+
+    return (<ListGroup>
+
+        <ListGroupItem>
+            <h5 className="pb-2">Atualizar Dados</h5>
+            <div className="theme-settings-swatches">
+                <ButtonGroup className="mt-2">
+                    <Button
+                        className={cx("btn-wide btn-shadow btn-primary",
+                            // { active: colorScheme === 'white' }
+                        )}
+                        onClick={localDBupdate}
+                    >{'Computador Local'}
+                    </Button>
+                    <Button className={cx("btn-wide btn-shadow btn-primary",
+                        // { active: colorScheme === 'gray' }
+                    )}
+                        onClick={() => ({})}
+                    >SharePoint
+                    </Button>
+                </ButtonGroup>
+
+            </div>
+            <h6 className="pb-2">{label1}</h6>
+        </ListGroupItem>
+    </ListGroup >);
+}
 
 class ThemeOptions extends Component {
 
@@ -57,7 +290,7 @@ class ThemeOptions extends Component {
 
     }
 
-    
+
 
     toggle(tab) {
         if (this.state.activeTab !== tab) {
@@ -72,47 +305,47 @@ class ThemeOptions extends Component {
     };
 
     toggleEnableBackgroundImage = () => {
-        let {enableBackgroundImage, setEnableBackgroundImage} = this.props;
+        let { enableBackgroundImage, setEnableBackgroundImage } = this.props;
         setEnableBackgroundImage(!enableBackgroundImage);
     }
 
     toggleEnableFixedHeader = () => {
-        let {enableFixedHeader, setEnableFixedHeader} = this.props;
+        let { enableFixedHeader, setEnableFixedHeader } = this.props;
         setEnableFixedHeader(!enableFixedHeader);
     }
 
     toggleEnableHeaderShadow = () => {
-        let {enableHeaderShadow, setEnableHeaderShadow} = this.props;
+        let { enableHeaderShadow, setEnableHeaderShadow } = this.props;
         setEnableHeaderShadow(!enableHeaderShadow);
     }
 
     toggleEnableSidebarShadow = () => {
-        let {enableSidebarShadow, setEnableSidebarShadow} = this.props;
+        let { enableSidebarShadow, setEnableSidebarShadow } = this.props;
         setEnableSidebarShadow(!enableSidebarShadow);
     }
 
     toggleEnableFixedSidebar = () => {
-        let {enableFixedSidebar, setEnableFixedSidebar} = this.props;
+        let { enableFixedSidebar, setEnableFixedSidebar } = this.props;
         setEnableFixedSidebar(!enableFixedSidebar);
     }
 
     toggleEnablePageTitleIcon = () => {
-        let {enablePageTitleIcon, setEnablePageTitleIcon} = this.props;
+        let { enablePageTitleIcon, setEnablePageTitleIcon } = this.props;
         setEnablePageTitleIcon(!enablePageTitleIcon);
     }
 
     toggleEnablePageTitleSubheading = () => {
-        let {enablePageTitleSubheading, setEnablePageTitleSubheading} = this.props;
+        let { enablePageTitleSubheading, setEnablePageTitleSubheading } = this.props;
         setEnablePageTitleSubheading(!enablePageTitleSubheading);
     }
 
     toggleEnablePageTabsAlt = () => {
-        let {enablePageTabsAlt, setEnablePageTabsAlt} = this.props;
+        let { enablePageTabsAlt, setEnablePageTabsAlt } = this.props;
         setEnablePageTabsAlt(!enablePageTabsAlt);
     }
 
     toggleEnableFixedFooter = () => {
-        let {enableFixedFooter, setEnableFixedFooter} = this.props;
+        let { enableFixedFooter, setEnableFixedFooter } = this.props;
         setEnableFixedFooter(!enableFixedFooter);
     }
 
@@ -146,23 +379,33 @@ class ThemeOptions extends Component {
 
         } = this.props;
 
-        const {showing} = this.state;
+        const { showing } = this.state;
 
         return (
             <div className={"ui-theme-settings " + (showing ? 'settings-open' : '')}>
-                <Button className="btn-open-options" id="TooltipDemo" color="warning" onClick={() => this.setState({showing: !showing})}>
-                    <FontAwesomeIcon icon={faCog} spin  color="#573a04" fixedWidth={false} size="2x"/>
+                <Button className="btn-open-options" id="TooltipDemo" color="warning" onClick={() => this.setState({ showing: !showing })}>
+                    <FontAwesomeIcon icon={faCog} spin={false} color="#573a04" fixedWidth={false} size="2x" />
                 </Button>
                 <UncontrolledTooltip placement="left" target={'TooltipDemo'}>
-                    Open Layout Configurator
+                    Configurações
                 </UncontrolledTooltip>
                 <div className="theme-settings__inner">
                     <PerfectScrollbar>
                         <div className="theme-settings__options-wrapper">
-                            <h3 className="themeoptions-heading"> Layout Options</h3>
+                            <h3 className="themeoptions-heading"> Configurações</h3>
                             <div className="p-3">
+                                <h1>My simple Dexie app</h1>
+
+                                <h2>Add Friend</h2>
+                                <AddFriendForm defaultAge={21} />
+
+                                <h2>Friend List</h2>
+                                <FriendList minAge={18} maxAge={65} />
+                            </div>
+                            <div className="p-3">
+                                <DatabaseUpdater />
                                 <ListGroup>
-                                    <ListGroupItem>
+                                    {/*   <ListGroupItem>
                                         <div className="widget-content p-0">
                                             <div className="widget-content-wrapper">
                                                 <div className="widget-content-left me-3">
@@ -765,20 +1008,7 @@ class ThemeOptions extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                    </ListGroupItem>
-                                    <ListGroupItem>
-                                        <h5 className="pb-2">Light Color Schemes</h5>
-                                        <div className="theme-settings-swatches">
-                                            <ButtonGroup className="mt-2">
-                                                <Button className={cx("btn-wide btn-shadow btn-primary", {active: colorScheme === 'white'})}
-                                                    onClick={() => setColorScheme("white")}>White Theme
-                                                </Button>
-                                                <Button className={cx("btn-wide btn-shadow btn-primary", {active: colorScheme === 'gray'})}
-                                                    onClick={() => setColorScheme("gray")}>Gray Theme
-                                                </Button>
-                                            </ButtonGroup>
-                                        </div>
-                                    </ListGroupItem>
+                                    </ListGroupItem> */}
                                 </ListGroup>
                             </div>
                         </div>

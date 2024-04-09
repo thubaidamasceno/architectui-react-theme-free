@@ -7,6 +7,9 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import HeaderLogo from "../AppLogo";
 
+import MegaMenuFooter from "../AppFooter/Components/FooterMegaMenu";
+import FooterDots from "../AppFooter/Components/FooterDots";
+
 class Header extends React.Component {
   render() {
     let {
@@ -27,8 +30,15 @@ class Header extends React.Component {
               <div className={cx("app-header__content", {
                   "header-mobile-open": enableMobileMenuSmall,
                 })}>
-              </div>
+            <div className="app-footer-right">
+              <MegaMenuFooter />
             </div>
+            </div>
+                  
+            <div className="app-footer-left">
+              <FooterDots />
+            </div>
+              </div>
           </CSSTransition>
         </TransitionGroup>
       </Fragment>

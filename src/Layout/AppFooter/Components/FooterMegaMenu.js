@@ -4,7 +4,7 @@ import { Popover, Nav, NavLink, Col, Row, NavItem, Button } from "reactstrap";
 
 import bg4 from "../../../assets/utils/images/dropdown-header/city5.jpg";
 
-import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleDown, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -41,7 +41,7 @@ class FooterMegaMenu extends React.Component {
           <NavItem>
             <NavLink href="#" onClick={this.toggle} id="PopoverMegaMenuFooter">
               Footer Menu
-              <FontAwesomeIcon className="ms-2 opacity-8" icon={faAngleUp} />
+              <FontAwesomeIcon className="ms-2 opacity-8" icon={faAngleDown} />
             </NavLink>
           </NavItem>
           <Popover className="rm-max-width" placement="top-start" fade={false} hideArrow
@@ -113,7 +113,7 @@ class FooterMegaMenu extends React.Component {
               <div className="badge bg-dark ms-0 ms-1">
                 <small>NEW</small>
               </div>
-              <FontAwesomeIcon className="ms-2 opacity-8" icon={faAngleUp} />
+              <FontAwesomeIcon className="ms-2 opacity-8" icon={faAngleDown} />
             </NavLink>
           </NavItem>
           <Popover className="rm-max-width popover-custom" fade={false} hideArrow trigger="legacy"
