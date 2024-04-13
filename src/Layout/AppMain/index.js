@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 const UserPages = lazy(() => import("../../DemoPages/UserPages"));
 const Applications = lazy(() => import("../../DemoPages/Applications"));
 const Dashboards = lazy(() => import("../../DemoPages/Dashboards"));
+const Plantec = lazy(() => import("../../DemoPages/Plantec"));
 
 const Widgets = lazy(() => import("../../DemoPages/Widgets"));
 const Elements = lazy(() => import("../../DemoPages/Elements"));
@@ -183,6 +184,23 @@ const AppMain = () => {
                 <Route path="/dashboards" component={Dashboards}/>
             </Suspense>
 
+            {/* Plantec */}
+
+            <Suspense fallback={
+                <div className="loader-container">
+                    <div className="loader-container-inner">
+                        <div className="text-center">
+                            <Loader type="ball-grid-cy"/>
+                        </div>
+                        <h6 className="mt-3">
+                            Please wait while we load all the Plantec examples
+                            <small>Because this is a demonstration, we load at once all the Dashboards examples. This wouldn't happen in a real live app!</small>
+                        </h6>
+                    </div>
+                </div>
+            }>
+                <Route path="/plantec" component={Plantec}/>
+            </Suspense>
 
             <Route exact path="/" render={() => (
                 <Redirect to="/dashboards/reservas"/>

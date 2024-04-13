@@ -11,6 +11,7 @@ import {
   FormsNav,
   WidgetsNav,
   ChartsNav,
+  PlantecNav
 } from "./NavItems";
 
 class Nav extends Component {
@@ -33,7 +34,7 @@ class Nav extends Component {
           className="vertical-nav-menu" iconNamePrefix="" classNameStateIcon="pe-7s-angle-down"/>
 
         <h5 className="app-sidebar__heading">Plantec</h5>
-        <MetisMenu content={MainNav} onSelected={this.toggleMobileSidebar} activeLinkFromLocation
+        <MetisMenu content={PlantecNav} onSelected={this.toggleMobileSidebar} activeLinkFromLocation
           className="vertical-nav-menu" iconNamePrefix="" classNameStateIcon="pe-7s-angle-down"/>
 
 

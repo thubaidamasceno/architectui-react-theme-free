@@ -19,6 +19,13 @@ export const MainNav = [
         to: '#/dashboards/crm',
     },
 ];
+export const PlantecNav = [
+    {
+        icon: 'pe-7s-rocket',
+        label: 'Plantec',
+        to: '#/plantec/plantecform',
+    },
+];
 export const ComponentsNav = [
     {
         icon: 'pe-7s-diamond',
