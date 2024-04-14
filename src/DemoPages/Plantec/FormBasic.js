@@ -368,7 +368,34 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                                <Row>
+                              {[
+                                ["Plataforma", "", 1],
+                                ["Núcleo", "", 1],
+                                ["OM", "", 1],
+                                ["Sistema", "", 1],
+                                ["TAG Equip.", "", 1],
+                                ["Descrição resumida do serviço", "", 3],
+                                ["Tipo Nota", "", 1],
+                                ["IF", "", 1],
+                                ["Dt Criação", "", 1],
+                                ["Lead Time da Nota", "", 1],
+                              ].map((colfield,i) => (
+                                <Col md={colfield[2]}>                                  
+                                  <FormGroup>
+                                      <Label for="exampleCity">
+                                      {colfield[0]}
+                                      </Label>
+                                      <Input
+                                        type="text"
+                                        name="city"
+                                        id="exampleCity"
+                                      />
+                                    </FormGroup>
+                                </Col>
+                              ))}
+                          </Row>  </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
