@@ -34,12 +34,18 @@ import { Workspace } from "polotno/canvas/workspace";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import { createStore } from "polotno/model/store";
 
-import { Document, Page, pdfjs } from "react-pdf";
+import "ag-grid-enterprise";
+import { AgGridReact } from "ag-grid-react"; // React Grid Logic
+import "ag-grid-enterprise/styles/ag-grid.css";
+import "ag-grid-enterprise/styles/ag-theme-balham.css";
 
+import { Page, Document, pdfjs } from "react-pdf";
 import Sample from "./Sample";
 
 import { getImageSize, getCrop } from "polotno/utils/image";
 import "pdfjs-dist/build/pdf.worker.entry";
+import PlantecPlanilha from "./PlantecPlanilha";
+
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",
   import.meta.url
@@ -187,22 +193,7 @@ export const PlotnoApp = ({ store }) => {
 };
 
 const FormsDefault = () => {
-  const [accordion, setAccordion] = useState([
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-  ]);
+  const [accordion, setAccordion] = useState(Array(15).fill(true));
 
   const toggleAccordion = (tab) => {
     const prevState = accordion;
@@ -231,10 +222,10 @@ const FormsDefault = () => {
             >
               <TabPane tab="Plantec" key="1">
                 <Container fluid>
-                  <Card className="main-card mb-3">
+                  <Card className="main-card mb-2">
                     <CardBody>
                       <CardTitle>Formulário</CardTitle>
-                      <div id="accordion" className="accordion-wrapper mb-3">
+                      <div id="accordion" className="accordion-wrapper mb-1">
                         <Card>
                           <CardHeader id="headingOne">
                             <Button
@@ -255,7 +246,35 @@ const FormsDefault = () => {
                             aria-labelledby="headingOne"
                           >
                             <CardBody>
-                              {1 ? (
+                              <Row>
+                                {[
+                                  ["Nome do Responsável", "", 5],
+                                  ["Chave", "", 1],
+                                  ["Matrícula", "", 2],
+                                  ["Célula", "", 3],
+                                  ["Profissional Backup", "", 5],
+                                ].map((colfield, i) => (
+                                  <Col md={colfield[2]}>
+                                    <FormGroup>
+                                      <Label
+                                        for=""
+                                        height="1.2em"
+                                        style={{
+                                          height: "1.2em",
+                                          width: "100%",
+                                          fontWeight: 500,
+                                          "text-overflow": "ellipsis",
+                                          overflow: "hidden",
+                                        }}
+                                      >
+                                        {colfield[0]}
+                                      </Label>
+                                      <Input type="text" name="" id="" />
+                                    </FormGroup>
+                                  </Col>
+                                ))}
+                              </Row>
+                              {/* {1 ? (
                                 <Row>
                                   <Col md={4}>
                                     <FormGroup>
@@ -344,7 +363,7 @@ const FormsDefault = () => {
                                     </InputGroup>
                                   </Col>
                                 </Row>
-                              )}
+                              )} */}
                             </CardBody>
                           </Collapse>
                         </Card>
@@ -369,33 +388,40 @@ const FormsDefault = () => {
                             id="collapseTwo"
                           >
                             <CardBody>
-                                <Row>
-                              {[
-                                ["Plataforma", "", 1],
-                                ["Núcleo", "", 1],
-                                ["OM", "", 1],
-                                ["Sistema", "", 1],
-                                ["TAG Equip.", "", 1],
-                                ["Descrição resumida do serviço", "", 3],
-                                ["Tipo Nota", "", 1],
-                                ["IF", "", 1],
-                                ["Dt Criação", "", 1],
-                                ["Lead Time da Nota", "", 1],
-                              ].map((colfield,i) => (
-                                <Col md={colfield[2]}>                                  
-                                  <FormGroup>
-                                      <Label for="exampleCity">
-                                      {colfield[0]}
+                              <Row>
+                                {[
+                                  ["Plataforma", "", 1],
+                                  ["Núcleo", "", 1],
+                                  ["OM", "", 2],
+                                  ["Sistema", "", 1],
+                                  ["TAG Equip.", "", 2],
+                                  ["Descrição resumida do serviço", "", 4],
+                                  ["Tipo Nota", "", 1],
+                                  ["IF", "", 1],
+                                  ["Data. Criação", "", 1],
+                                  ["Lead Time da Nota", "", 2],
+                                ].map((colfield, i) => (
+                                  <Col md={colfield[2]}>
+                                    <FormGroup>
+                                      <Label
+                                        for=""
+                                        height="1.2em"
+                                        style={{
+                                          height: "1.2em",
+                                          width: "100%",
+                                          fontWeight: 500,
+                                          "text-overflow": "ellipsis",
+                                          overflow: "hidden",
+                                        }}
+                                      >
+                                        {colfield[0]}
                                       </Label>
-                                      <Input
-                                        type="text"
-                                        name="city"
-                                        id="exampleCity"
-                                      />
+                                      <Input type="text" name="" id="" />
                                     </FormGroup>
-                                </Col>
-                              ))}
-                          </Row>  </CardBody>
+                                  </Col>
+                                ))}
+                              </Row>{" "}
+                            </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
@@ -418,7 +444,28 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                              <div
+                                style={{ height: "10em", width: "100%" }}
+                                className={"ag-theme-balham"}
+                              >
+                                <AgGridReact
+                                  onRowEditingStopped={(a) => console.log(a)}
+                                  editType="fullRow"
+                                  columnDefs={[
+                                    { field: "Tipo" },
+                                    { field: "Recurso" },
+                                    { field: "N° prof." },
+                                    { field: "N° dias" },
+                                    { field: "HH" },
+                                    { field: "Origem" },
+                                    { field: "Observações", width: 200 },
+                                  ].map((a) => ({ ...a, editable: true }))}
+                                  rowData={[{}]}
+                                  defaultColDef={{ width: 100 }}
+                                />
+                              </div>
+                            </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
@@ -441,7 +488,33 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                              <div
+                                style={{ height: "10em", width: "100%" }}
+                                className={"ag-theme-balham"}
+                              >
+                                <AgGridReact
+                                  onRowEditingStopped={(a) => console.log(a)}
+                                  editType="fullRow"
+                                  columnDefs={[
+                                    "CONTRATADA",
+                                    "Contrato",
+                                    "N° prof.",
+                                    "N° dias",
+                                    "HH",
+                                    "Origem",
+                                    { field: "Observações", width: 200 },
+                                  ].map((a) => ({
+                                    ...(typeof a === "string"
+                                      ? { field: a }
+                                      : a),
+                                    editable: true,
+                                  }))}
+                                  rowData={[{}]}
+                                  defaultColDef={{ width: 100 }}
+                                />
+                              </div>
+                            </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
@@ -464,7 +537,33 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                              <div
+                                style={{ height: "10em", width: "100%" }}
+                                className={"ag-theme-balham"}
+                              >
+                                <AgGridReact
+                                  onRowEditingStopped={(a) => console.log(a)}
+                                  editType="fullRow"
+                                  columnDefs={[
+                                    "Tipo",
+                                    "Origem",
+                                    "N° prof.",
+                                    "N° dias",
+                                    "HH",
+                                    "Nota SAP",
+                                    { field: "Observações", width: 200 },
+                                  ].map((a) => ({
+                                    ...(typeof a === "string"
+                                      ? { field: a }
+                                      : a),
+                                    editable: true,
+                                  }))}
+                                  rowData={[{}]}
+                                  defaultColDef={{ width: 100 }}
+                                />
+                              </div>
+                            </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
@@ -487,7 +586,37 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                              <div
+                                style={{ height: "10em", width: "100%" }}
+                                className={"ag-theme-balham"}
+                              >
+                                <AgGridReact
+                                  onRowEditingStopped={(a) => console.log(a)}
+                                  editType="fullRow"
+                                  columnDefs={[
+                                    "FABRICANTE",
+                                    "PART NUMBER",
+                                    "NM",
+                                    "DESCRIÇÃO",
+                                    "Qtd.",
+                                    "UMUnidade Básica SAP",
+                                    "Observações",
+                                    "Impeditivo?",
+                                    "MIRO?",
+                                    "Global?",
+                                    "MRP",
+                                  ].map((a) => ({
+                                    ...(typeof a === "string"
+                                      ? { field: a }
+                                      : a),
+                                    editable: true,
+                                  }))}
+                                  rowData={[{}]}
+                                  defaultColDef={{ width: 100 }}
+                                />
+                              </div>
+                            </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
@@ -511,7 +640,32 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                              <div
+                                style={{ height: "10em", width: "100%" }}
+                                className={"ag-theme-balham"}
+                              >
+                                <AgGridReact
+                                  onRowEditingStopped={(a) => console.log(a)}
+                                  editType="fullRow"
+                                  columnDefs={[
+                                    "FABRICANTE",
+                                    "KIT",
+                                    "DESCRIÇÃO",
+                                    "LOCALIZAÇÃO",
+                                    "QTD",
+                                    "Observações",
+                                  ].map((a) => ({
+                                    ...(typeof a === "string"
+                                      ? { field: a }
+                                      : a),
+                                    editable: true,
+                                  }))}
+                                  rowData={[{}]}
+                                  defaultColDef={{ width: 100 }}
+                                />
+                              </div>
+                            </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
@@ -535,7 +689,35 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                              <div
+                                style={{ height: "10em", width: "100%" }}
+                                className={"ag-theme-balham"}
+                              >
+                                <AgGridReact
+                                  onRowEditingStopped={(a) => console.log(a)}
+                                  editType="fullRow"
+                                  columnDefs={[
+                                    "Tarefa",
+                                    "Descrição",
+                                    "Recurso",
+                                    "Nº Rec.",
+                                    "Duração",
+                                    "Unidade",
+                                    "Relação",
+                                    "Predec.",
+                                    "Sucessora",
+                                  ].map((a) => ({
+                                    ...(typeof a === "string"
+                                      ? { field: a }
+                                      : a),
+                                    editable: true,
+                                  }))}
+                                  rowData={[{}]}
+                                  defaultColDef={{ width: 100 }}
+                                />
+                              </div>
+                            </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
@@ -558,7 +740,63 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                              {[
+                                [
+                                  ["DECK", "", 4],
+                                  ["MÓDULO", "", 4],
+                                  ["ZONA DE SEGURANÇA", "", 4],
+                                  ["LOCAL", "", 4],
+                                ],
+                                [
+                                  ["Área Responsável", "", 4],
+                                  ["Tipo de Permissão de Trabalho", "", 4],
+                                  ["Trabalho em Altura?", "", 4],
+                                  ["Sobre o Mar?", "", 4],
+                                ],
+                                [
+                                  ["Condições", "", 4],
+                                  ["Atividade Pará-quedas", "", 4],
+                                  ["Demanda Matriz de Bloqueio?", "", 4],
+                                  ["Tipo de Bloqueio", "", 4],
+                                ],
+                                [
+                                  ["Sistemas Elétricos", "", 4],
+                                  ["Situação", "", 4],
+                                  ["Tensão", "", 4],
+                                  ["Precisa de apoio operacional?", "", 4],
+                                ],
+                                [
+                                  ["Sistemas Pressurizados", "", 4],
+                                  ["Fluido", "", 4],
+                                  ["Pressão", "", 4],
+                                  ["Diâmetro Nominal", "", 4],
+                                ],
+                              ].map((a) => (
+                                <Row>
+                                  {a.map((colfield, i) => (
+                                    <Col md={colfield[2]}>
+                                      <FormGroup>
+                                        <Label
+                                          for=""
+                                          height="1.2em"
+                                          style={{
+                                            height: "1.2em",
+                                            width: "100%",
+                                            fontWeight: 500,
+                                            "text-overflow": "ellipsis",
+                                            overflow: "hidden",
+                                          }}
+                                        >
+                                          {colfield[0]}
+                                        </Label>
+                                        <Input type="text" name="" id="" />
+                                      </FormGroup>
+                                    </Col>
+                                  ))}
+                                </Row>
+                              ))}
+                            </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
@@ -581,7 +819,37 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                              {[[
+                                ["É APLICÁVEL ?", "", 4],
+                                ["POR QUE?", "", 4],
+                                ["O QUE FAZER ?", "", 4],
+                                ["OBSERVAÇÃO", "", 4],
+                              ]].map((a) => (
+                                <Row>
+                                  {a.map((colfield, i) => (
+                                    <Col md={colfield[2]}>
+                                      <FormGroup>
+                                        <Label
+                                          for=""
+                                          height="1.2em"
+                                          style={{
+                                            height: "1.2em",
+                                            width: "100%",
+                                            fontWeight: 500,
+                                            "text-overflow": "ellipsis",
+                                            overflow: "hidden",
+                                          }}
+                                        >
+                                          {colfield[0]}
+                                        </Label>
+                                        <Input type="text" name="" id="" />
+                                      </FormGroup>
+                                    </Col>
+                                  ))}
+                                </Row>
+                              ))}
+                            </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
@@ -604,7 +872,37 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                              {[[
+                                ["DATA PLANEJADA EXECUÇÃO", "", 4],
+                                ["LOGÍSTICA DE MATERIAIS", "", 4],
+                                ["LOGÍSTICA DE FERRAMENTAS", "", 4],
+                                ["OBSERVAÇÕES", "", 4],
+                              ]].map((a) => (
+                                <Row>
+                                  {a.map((colfield, i) => (
+                                    <Col md={colfield[2]}>
+                                      <FormGroup>
+                                        <Label
+                                          for=""
+                                          height="1.2em"
+                                          style={{
+                                            height: "1.2em",
+                                            width: "100%",
+                                            fontWeight: 500,
+                                            "text-overflow": "ellipsis",
+                                            overflow: "hidden",
+                                          }}
+                                        >
+                                          {colfield[0]}
+                                        </Label>
+                                        <Input type="text" name="" id="" />
+                                      </FormGroup>
+                                    </Col>
+                                  ))}
+                                </Row>
+                              ))}
+                            </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
@@ -628,7 +926,37 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                              {[[
+                                ["DATA PLAN. APRES. ET E PPU", "", 4],
+                                ["DATA REAL.APRES. ET E PPU", "", 4],
+                                ["DATA DISP. CONTRATAÇÃO", "", 4],
+                                ["OBSERVAÇÕES", "", 4],
+                              ]].map((a) => (
+                                <Row>
+                                  {a.map((colfield, i) => (
+                                    <Col md={colfield[2]}>
+                                      <FormGroup>
+                                        <Label
+                                          for=""
+                                          height="1.2em"
+                                          style={{
+                                            height: "1.2em",
+                                            width: "100%",
+                                            fontWeight: 500,
+                                            "text-overflow": "ellipsis",
+                                            overflow: "hidden",
+                                          }}
+                                        >
+                                          {colfield[0]}
+                                        </Label>
+                                        <Input type="text" name="" id="" />
+                                      </FormGroup>
+                                    </Col>
+                                  ))}
+                                </Row>
+                              ))}
+                            </CardBody>
                           </Collapse>
                         </Card>
                         <Card>
@@ -651,7 +979,14 @@ const FormsDefault = () => {
                             data-parent="#accordion"
                             id="collapseTwo"
                           >
-                            <CardBody></CardBody>
+                            <CardBody>
+                              <Input
+                                type="textarea"
+                                name=""
+                                id=""
+                                style={{ width: "100%", height: "100%" }}
+                              />
+                            </CardBody>
                           </Collapse>
                         </Card>
                       </div>
@@ -659,10 +994,14 @@ const FormsDefault = () => {
                   </Card>
                 </Container>
               </TabPane>
-              <TabPane tab="Desenhos e Diagramas" key="2">
+
+              <TabPane tab="Plantec (planilha)" key="2">
+                <PlantecPlanilha />
+              </TabPane>
+              <TabPane tab="Desenhos e Diagramas" key="3">
                 <PlotnoApp store={store} />
               </TabPane>
-              <TabPane tab="Anexos" key="3">
+              <TabPane tab="Anexos" key="4">
                 <div>
                   {/* <PDFReader /> */}
                   <Sample />
