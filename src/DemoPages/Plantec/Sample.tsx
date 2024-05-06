@@ -56,9 +56,9 @@ export default function Sample() {
 
   return (
     <div className="Example">
-      <header>
+      {/* <header>
         <h1>react-pdf sample page</h1>
-      </header>
+      </header> */}
       <div className="Example__container">
         <div className="Example__container__load">
           <label htmlFor="file">Load from file:</label>{' '}

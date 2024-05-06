@@ -820,12 +820,14 @@ const FormsDefault = () => {
                             id="collapseTwo"
                           >
                             <CardBody>
-                              {[[
-                                ["É APLICÁVEL ?", "", 4],
-                                ["POR QUE?", "", 4],
-                                ["O QUE FAZER ?", "", 4],
-                                ["OBSERVAÇÃO", "", 4],
-                              ]].map((a) => (
+                              {[
+                                [
+                                  ["É APLICÁVEL ?", "", 4],
+                                  ["POR QUE?", "", 4],
+                                  ["O QUE FAZER ?", "", 4],
+                                  ["OBSERVAÇÃO", "", 4],
+                                ],
+                              ].map((a) => (
                                 <Row>
                                   {a.map((colfield, i) => (
                                     <Col md={colfield[2]}>
@@ -873,12 +875,14 @@ const FormsDefault = () => {
                             id="collapseTwo"
                           >
                             <CardBody>
-                              {[[
-                                ["DATA PLANEJADA EXECUÇÃO", "", 4],
-                                ["LOGÍSTICA DE MATERIAIS", "", 4],
-                                ["LOGÍSTICA DE FERRAMENTAS", "", 4],
-                                ["OBSERVAÇÕES", "", 4],
-                              ]].map((a) => (
+                              {[
+                                [
+                                  ["DATA PLANEJADA EXECUÇÃO", "", 4],
+                                  ["LOGÍSTICA DE MATERIAIS", "", 4],
+                                  ["LOGÍSTICA DE FERRAMENTAS", "", 4],
+                                  ["OBSERVAÇÕES", "", 4],
+                                ],
+                              ].map((a) => (
                                 <Row>
                                   {a.map((colfield, i) => (
                                     <Col md={colfield[2]}>
@@ -927,12 +931,14 @@ const FormsDefault = () => {
                             id="collapseTwo"
                           >
                             <CardBody>
-                              {[[
-                                ["DATA PLAN. APRES. ET E PPU", "", 4],
-                                ["DATA REAL.APRES. ET E PPU", "", 4],
-                                ["DATA DISP. CONTRATAÇÃO", "", 4],
-                                ["OBSERVAÇÕES", "", 4],
-                              ]].map((a) => (
+                              {[
+                                [
+                                  ["DATA PLAN. APRES. ET E PPU", "", 4],
+                                  ["DATA REAL.APRES. ET E PPU", "", 4],
+                                  ["DATA DISP. CONTRATAÇÃO", "", 4],
+                                  ["OBSERVAÇÕES", "", 4],
+                                ],
+                              ].map((a) => (
                                 <Row>
                                   {a.map((colfield, i) => (
                                     <Col md={colfield[2]}>
@@ -996,16 +1002,35 @@ const FormsDefault = () => {
               </TabPane>
 
               <TabPane tab="Plantec (planilha)" key="2">
-                <PlantecPlanilha />
+                <Container fluid>
+                  <Card className="main-card mb-2">
+                    <CardBody>
+                      <div style={{alignContent:"center",width:"100%"}}>
+                      <PlantecPlanilha /></div>
+                    </CardBody>
+                  </Card>
+                </Container>
               </TabPane>
               <TabPane tab="Desenhos e Diagramas" key="3">
-                <PlotnoApp store={store} />
+                <Container fluid>
+                  <Card className="main-card mb-2">
+                    <CardBody>
+                      <PlotnoApp store={store} />
+                    </CardBody>
+                  </Card>
+                </Container>
               </TabPane>
               <TabPane tab="Anexos" key="4">
-                <div>
-                  {/* <PDFReader /> */}
-                  <Sample />
-                </div>
+                <Container fluid>
+                  <Card className="main-card mb-2">
+                    <CardBody>
+                      <div>
+                        {/* <PDFReader /> */}
+                        <Sample />
+                      </div>
+                    </CardBody>
+                  </Card>
+                </Container>
               </TabPane>
             </Tabs>
           </div>

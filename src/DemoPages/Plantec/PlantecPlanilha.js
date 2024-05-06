@@ -5,338 +5,63 @@ const PlantecPlanilha = ({ dados }) => {
     <div>
       <table
         border={0}
-        cellPadding={0}
+        id = "plantecTable"
+        // cellPadding={0}
         cellSpacing={0}
         // width={1200}
-        style={{width:"100%"}}
-      ><colgroup>
-        <col
-          class="xl161"
-          width={94}
-          // //style={{width:"71pt"}}
-        />
-        <col
-          class="xl160"
-          width={87}
-          // //style="mso-width-source:userset;mso-width-alt:3181;width:65pt"
-        />
-        <col
-          class="xl160"
-          width={107}
-          //{/*style="mso-width-source:userset;mso-width-alt:3913; width:80pt"*/}
-        />
-        <col
-          class="xl160"
-          width={55}
-          //style="mso-width-source:userset;mso-width-alt:2011; width:41pt"
-        />
-        <col
-          class="xl160"
-          width={103}
-          //style="mso-width-source:userset;mso-width-alt:3766; width:77pt"
-        />
-        <col
-          class="xl160"
-          width={62}
-          //style="mso-width-source:userset;mso-width-alt:2267; width:47pt"
-        />
-        <col
-          class="xl160"
-          width={85}
-          //style="mso-width-source:userset;mso-width-alt:3108; width:64pt"
-        />
-        <col
-          class="xl160"
-          width={167}
-          //style="mso-width-source:userset;mso-width-alt:6107; width:125pt"
-        />
-        <col
-          class="xl161"
-          width={89}
-          //style="mso-width-source:userset;mso-width-alt:3254; width:67pt"
-        />
-        <col
-          class="xl160"
-          width={78}
-          //style="mso-width-source:userset;mso-width-alt:2852; width:59pt"
-        />
-        <col
-          class="xl160"
-          width={86}
-          //style="mso-width-source:userset;mso-width-alt:3145; width:65pt"
-        />
-        <col
-          class="xl160"
-          width={91}
-          //style="mso-width-source:userset;mso-width-alt:3328; width:68pt"
-        />
-        <col
-          class="xl160"
-          width={78}
-          //style="mso-width-source:userset;mso-width-alt:2852; width:59pt"
-        />
-        <col
-          class="xl160"
-          width={97}
-          //style="mso-width-source:userset;mso-width-alt:3547; width:73pt"
-        />
-        <col
-          class="xl160"
-          width={77}
-          //style="mso-width-source:userset;mso-width-alt:2816; width:58pt"
-        />
-        <col
-          class="xl160"
-          width={75}
-          span={2}
-          //style="mso-width-source:userset;mso-width-alt: 2742;width:56pt"
-        />
-        <col
-          class="xl160"
-          width={132}
-          //style="mso-width-source:userset;mso-width-alt:4827; width:99pt"
-        />
-        <col
-          class="xl104"
-          width={89}
-          //style="mso-width-source:userset;mso-width-alt:3254; width:67pt"
-        />
-        <col
-          class="xl104"
-          width={164}
-          //style="mso-width-source:userset;mso-width-alt:5997; width:123pt"
-        />
-        <col
-          class="xl104"
-          width={117}
-          //style="mso-width-source:userset;mso-width-alt:4278; width:88pt"
-        />
-        <col
-          class="xl104"
-          width={166}
-          //style="mso-width-source:userset;mso-width-alt:6070; width:125pt"
-        />
-        <col
-          class="xl104"
-          width={217}
-          //style="mso-width-source:userset;mso-width-alt:7936; width:163pt"
-        />
-        <col
-          class="xl104"
-          width={130}
-          span={2}
-          //style="mso-width-source:userset;mso-width-alt: 4754;width:98pt"
-        />
-        <col
-          class="xl104"
-          width={115}
-          //style="mso-width-source:userset;mso-width-alt:4205; width:86pt"
-        />
-        <col
-          class="xl104"
-          width={133}
-          //style="mso-width-source:userset;mso-width-alt:4864; width:100pt"
-        />
-        <col
-          class="xl104"
-          width={97}
-          //style="mso-width-source:userset;mso-width-alt:3547; width:73pt"
-        />
-        <col
-          class="xl104"
-          width={62}
-          span={2} //style="width:47pt"
-        /></colgroup>
+        style={{ width: "100%" }}
+        className="p-4"
+      >
         <tbody>
           <tr height={79}>
             <td
               height={79}
-              // width={94}
-              //style="height:59.25pt;width:71pt"
-
               align="left"
               valign="top"
               className="xl102"
-            ></td>
+              colSpan={6}
+            ><div className="app-logo-petrobras" /></td>
             <td
-              className="xl102"
-              // width={87}
-              //style="width:65pt"
-            >
-              &nbsp;
-            </td>
-            <td
-              className="xl102"
-              // width={107}
-              //style="width:80pt"
-            >
-              &nbsp;
-            </td>
-            <td
-              className="xl103"
-              // width={55}
-              //style="width:41pt"
-            >
-              &nbsp;
-            </td>
-            <td 
-            colSpan={9} 
-            className="xl255"
-            //  width={839}
+              colSpan={6}
+              className="xl255"
             >
               PLANEJAMENTO DE SERVIÇOS
             </td>
             <td
-              colSpan={5}
+              colSpan={6}
               className="xl253"
-              // width={456}
-              //style="border-right:1.0pt solid black;width:342pt"
             >
               UN-BS/ATP-TUPI/MIED
             </td>
-            <td
-              className="xl104"
-              width={89}
-              //style="width:67pt"
-            ></td>
-            <td
-              className="xl104"
-              width={164}
-              //style="width:123pt"
-            ></td>
-            <td
-              className="xl104"
-              width={117}
-              //style="width:88pt"
-            ></td>
-            <td
-              className="xl104"
-              width={166}
-              //style="width:125pt"
-            ></td>
-            <td
-              className="xl104"
-              width={217}
-              //style="width:163pt"
-            ></td>
-            <td
-              className="xl104"
-              width={130}
-              //style="width:98pt"
-            ></td>
-            <td
-              className="xl104"
-              width={130}
-              //style="width:98pt"
-            ></td>
-            <td
-              className="xl104"
-              width={115}
-              //style="width:86pt"
-            ></td>
-            <td
-              className="xl104"
-              width={133}
-              //style="width:100pt"
-            ></td>
-            <td
-              className="xl104"
-              width={97}
-              //style="width:73pt"
-            ></td>
-            <td
-              className="xl104"
-              width={62}
-              //style="width:47pt"
-            ></td>
-            <td
-              className="xl104"
-              width={62}
-              //style="width:47pt"
-            ></td>
           </tr>
           <tr
             className="xl106"
             height={20}
-            //style="height:15.0pt"
           >
             <td
               height={20}
               className="xl106"
+              colSpan={2}
               //style="height:15.0pt"
             >
-              Versão/Revi
-              <span
-              //style="display:none"
-              >
-                são:
-              </span>
+              Versão/Revisão:
             </td>
-            <td
-              className="xl107"
-              //style="border-top:none"
-            >
-              &nbsp;
-            </td>
-            <td className="xl106" align="right">
+            <td className="xl106" align="right" contentEditable>
               2
             </td>
-            <td className="xl106"></td>
             <td
               className="xl108"
-              //style="border-top:none"
+              colSpan={3}
             >
-              Nome do Arquiv
-              <span
-              // style="display:none"
-              >
-                o:
-              </span>
+              Nome do Arquivo:
             </td>
             <td
-              className="xl109"
-              width={62}
-              //style="width:47pt"
-            ></td>
-            <td
               className="xl110"
-              colSpan={4}
+              colSpan={10}
               //style="mso-ignore:colSpan"
             >
               Plantec OM2028532845 rev.2 P-69 (3 ESC MEC GG-5241501B).xlsx
             </td>
-            <td
-              className="xl109"
-              width={86}
-              //style="width:65pt"
-            ></td>
-            <td
-              className="xl109"
-              width={91}
-              //style="width:68pt"
-            ></td>
-            <td
-              className="xl109"
-              width={78}
-              //style="width:59pt"
-            ></td>
-            <td className="xl111"></td>
-            <td className="xl111"></td>
-            <td className="xl111"></td>
-            <td className="xl111"></td>
-            <td className="xl112">&nbsp;</td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
           </tr>
           <tr
             height={24}
@@ -347,33 +72,13 @@ const PlantecPlanilha = ({ dados }) => {
               colSpan={18}
               height={24}
               className="xl258"
-              width={1638}
-              // style="border-right:1.0pt solid black;height:18.0pt;width:1230pt"
             >
               1. RESPONSÁVEL
-              <span
-              //style="mso-spacerun:yes"
-              >
-                 
-              </span>
             </td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
           </tr>
           <tr
-            height={37}
+            // height={37}
 
-            //style="mso-height-source:userset;height:28.15pt"
           >
             <td
               height={37}
@@ -387,62 +92,41 @@ const PlantecPlanilha = ({ dados }) => {
             </td>
             <td className="xl114">Chave:</td>
             <td
-              className="xl115"
-              width={89}
-              //style="width:67pt"
-            >
-              &nbsp;
-            </td>
-            <td
               className="xl116"
-              width={78}
+              contentEditable
               //style="width:59pt"
             >
               BIJX
             </td>
             <td
-              className="xl117"
-              width={86}
-              //style="width:65pt"
-            >
-              &nbsp;
-            </td>
-            <td
-              className="xl118"
-              width={91}
-              //style="width:68pt"
-            >
-              &nbsp;
-            </td>
-            <td
-              colSpan={2}
+              colSpan={1}
               className="xl262"
-              width={175}
 
               //style="width:132pt"
             >
               Matrícula:
             </td>
             <td
-              colSpan={4}
+              colSpan={1}
+              contentEditable
               className="xl263"
-              width={359}
               // style="border-right:1.0pt solid black;width:269pt"
             >
               48940627
             </td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
-            <td className="xl104"></td>
+            <td
+              colSpan={1}
+              className="xl262"
+
+              //style="width:132pt"
+            >Responsável Substituto:
+            </td>
+            <td
+              colSpan={1}
+              contentEditable
+              className="xl263"
+              // style="border-right:1.0pt solid black;width:269pt"
+            >José Renato</td>
           </tr>
           {/*
   <tr
@@ -460,18 +144,7 @@ height:18.0pt;width:1230pt"
     >
       2. IDENTIFICAÇÃO GERAL DOS SERVIÇOS - NOTAS PM
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr className="xl125" height={20} style="height:15.0pt">
     <td
@@ -531,18 +204,7 @@ none"
     >
       Lead Time da Nota
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -586,18 +248,7 @@ none"
     >
       ICPM SO JULHO/24
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={0} style="display:none">
     <td className="xl126" style="border-top:none">
@@ -647,18 +298,7 @@ none"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={0} style="display:none">
     <td className="xl126" style="border-top:none">
@@ -714,18 +354,7 @@ none"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={0} style="display:none">
     <td className="xl126" style="border-top:none">
@@ -781,18 +410,7 @@ none"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={0} style="display:none">
     <td className="xl126" style="border-top:none">
@@ -848,18 +466,7 @@ none"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={0} style="display:none">
     <td className="xl126" style="border-top:none">
@@ -915,18 +522,7 @@ none"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={0} style="display:none">
     <td className="xl126" style="border-top:none">
@@ -982,18 +578,7 @@ none"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={0} style="display:none">
     <td className="xl126" style="border-top:none">
@@ -1049,18 +634,7 @@ none"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={24}
@@ -1076,18 +650,7 @@ height:18.0pt;width:1230pt"
     >
       3. MÃO DE OBRA - NÚCLEO UN-BS - MIED
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr className="xl138" height={20} style="height:15.0pt">
     <td
@@ -1134,18 +697,7 @@ none"
     >
       Observações
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -1192,18 +744,7 @@ none"
     >
       Eng. Mied para Execução e Acompanhamento da Intervenção.
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={0} style="display:none">
     <td
@@ -1248,18 +789,7 @@ none"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={24}
@@ -1275,18 +805,7 @@ height:18.0pt;width:1230pt"
     >
       4. MÃO DE OBRA - CONTRATOS MIED
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr className="xl138" height={20} style="height:15.0pt">
     <td
@@ -1336,18 +855,7 @@ none"
     >
       Observações
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -1394,18 +902,7 @@ none"
       Eng. Wartsila para Execução e Acompanhamento da
       Intervenção.
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -1451,18 +948,7 @@ none"
     >
       Engenheiro Eletricista
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={21} style="height:15.75pt">
     <td
@@ -1475,18 +961,7 @@ height:15.75pt;width:1230pt"
     >
       5. MÃO DE OBRA - APOIOS OUTRAS GERÊNCIAS
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -1535,18 +1010,7 @@ none"
     >
       Observações
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -1593,18 +1057,7 @@ none"
       Montar / Desmontar Andaime
       <span style="mso-spacerun:yes"> </span>
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -1650,18 +1103,7 @@ none"
     >
       Raquetear linhas
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={24}
@@ -1677,18 +1119,7 @@ height:18.0pt;width:1230pt"
     >
       6. PLANEJAMENTO BÁSICO DE MATERIAIS
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={24}
@@ -1810,18 +1241,7 @@ width:136pt"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -1896,18 +1316,7 @@ none"
     <td className="xl150" style="border-top:none">
       Checklist
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -1989,18 +1398,7 @@ none"
     <td className="xl154" style="border-top:none">
       OK
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -2088,18 +1486,7 @@ background:red;mso-pattern:black none"
     >
       Não-OK
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -2182,18 +1569,7 @@ none"
     <td className="xl154" style="border-top:none">
       OK
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -2283,18 +1659,7 @@ background:red;mso-pattern:black none"
     >
       Não-OK
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -2377,18 +1742,7 @@ none"
     <td className="xl154" style="border-top:none">
       OK
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -2476,18 +1830,7 @@ background:red;mso-pattern:black none"
     >
       Não-OK
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -2570,18 +1913,7 @@ none"
     <td className="xl154" style="border-top:none">
       OK
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -2664,18 +1996,7 @@ none"
     <td className="xl154" style="border-top:none">
       OK
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -2763,18 +2084,7 @@ background:red;mso-pattern:black none"
     >
       Concluir Checklist
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -2861,18 +2171,7 @@ background:red;mso-pattern:black none"
     >
       Fazer Checklist
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={18}
@@ -2962,18 +2261,7 @@ background:red;mso-pattern:black none"
     >
       Fazer Checklist
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={18}
@@ -3063,18 +2351,7 @@ background:red;mso-pattern:black none"
     >
       Fazer Checklist
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={18}
@@ -3159,18 +2436,7 @@ none"
     <td className="xl154" style="border-top:none">
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -3185,18 +2451,7 @@ height:15.0pt"
     >
       LINKS ÚTEIS MATERIAIS
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={17}
@@ -3223,18 +2478,7 @@ width:973pt"
         http://mvh1120454/
       </a>
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={17}
@@ -3264,18 +2508,7 @@ width:973pt"
         https://forms.office.com/pages/responsepage.aspx?id=QWJvW1ea5EuOUB36cueaV2iXd9EQ4KtCnqmbtElKmU5URVhEWlpHTzYyOUxOWU5SNTlISDRKTEtCSi4u
       </a>
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={17}
@@ -3305,18 +2538,7 @@ width:973pt"
         https://petrobras.service-now.com/cs?id=sc_cat_item&amp;sys_id=43ef84658769bd50aeea42e30cbb359e
       </a>
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -3333,18 +2555,7 @@ height:15.0pt;width:1230pt"
       7. PLANEJAMENTO DE FERRAMENTAS ESPECIAIS E MOVIMENTAÇÃO
       DE CARGA
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -3396,18 +2607,7 @@ none"
     >
       Observações
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -3460,18 +2660,7 @@ border-left:none;width:269pt"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -3532,18 +2721,7 @@ none"
     <td className="xl159" width={132} style="width:99pt">
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -3594,18 +2772,7 @@ border-left:none;width:269pt"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -3622,18 +2789,7 @@ height:15.6pt;width:1230pt"
       8. SEQUÊNCIA DE SERVIÇOS DE CAMPO - DESMONTAGEM,
       MONTAGEM, MANUTENÇÃO, TESTES
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -3685,18 +2841,7 @@ none"
     <td className="xl150" style="border-top:none">
       Sucessora
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -3762,18 +2907,7 @@ border-left:none;width:191pt"
     <td className="xl169" style="border-top:none">
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -3839,18 +2973,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       1.2
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -3917,18 +3040,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       2
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -4027,18 +3139,7 @@ border-left:none;width:191pt"
     <td className="xl176" style="border-top:none">
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -4106,18 +3207,7 @@ border-left:none;width:191pt"
     <td className="xl180" style="border-top:none">
       2.2
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={23}
@@ -4184,18 +3274,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       2.3
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -4262,18 +3341,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       2.4
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -4340,18 +3408,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       2.5
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -4418,18 +3475,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       2.6
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={22}
@@ -4496,18 +3542,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       2.7
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -4573,18 +3608,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       2.8
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -4651,18 +3675,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       2.9
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -4729,18 +3742,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       2.10
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -4807,18 +3809,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       3
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -4884,18 +3875,7 @@ border-left:none;width:191pt"
     <td className="xl169" style="border-top:none">
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -4961,18 +3941,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       3.4
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -5038,18 +4007,7 @@ border-left:none;width:191pt"
     <td className="xl154" style="border-top:none">
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={21} style="height:15.75pt">
     <td
@@ -5062,18 +4020,7 @@ height:15.75pt;width:1230pt"
     >
       9. PLANEJAMENTO DA PERMISSÃO DE TRABALHO
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5109,18 +4056,7 @@ none"
     >
       LOCAL
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5156,18 +4092,7 @@ none"
     >
       M Hull, Sala de GGI
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5203,18 +4128,7 @@ none"
     >
       Sobre o Mar?
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5250,18 +4164,7 @@ none"
     >
       Não
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5297,18 +4200,7 @@ none"
     >
       Tipo de Bloqueio
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -5347,18 +4239,7 @@ none"
     >
       Duplo
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5394,18 +4275,7 @@ none"
     >
       Precisa de apoio operacional?
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5430,18 +4300,7 @@ none"
     >
       Sim
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5477,18 +4336,7 @@ none"
     >
       Diâmetro Nominal
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5524,18 +4372,7 @@ none"
     >
       Superior a 4&quot;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={21} style="height:15.75pt">
     <td
@@ -5548,18 +4385,7 @@ height:15.75pt;width:1230pt"
     >
       10. AVALIAÇÃO DO PROCESSO DE GESTÃO DE MUDANÇA
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -5597,18 +4423,7 @@ none"
     >
       OBSERVAÇÃO
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -5646,18 +4461,7 @@ none"
     >
       N/A
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr
     height={20}
@@ -5673,18 +4477,7 @@ height:15.0pt;width:1230pt"
     >
       11. PROGRAMAÇÃO PRÉVIA
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5719,18 +4512,7 @@ none"
     >
       OBSERVAÇÕES
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5756,18 +4538,7 @@ none"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={21} style="height:15.75pt">
     <td
@@ -5780,18 +4551,7 @@ height:15.75pt;width:1230pt"
     >
       12. NECESSIDADES DE CONTRATAÇÃO DE PEQUENOS SERVIÇOS
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5816,18 +4576,7 @@ none"
     >
       OBSERVAÇÕES
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5857,18 +4606,7 @@ none"
     >
       &nbsp;
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={21} style="height:15.75pt">
     <td
@@ -5881,18 +4619,7 @@ height:15.75pt;width:1230pt"
     >
       13. OBSERVAÇÕES GERAIS
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
   </tr>
   <tr height={20} style="height:15.0pt">
     <td
@@ -5920,18 +4647,7 @@ height:15.75pt;width:1230pt"
       caracteristica no APLAT de &quot; Ambientes Protegidos
       por CO2&quot;.
     </td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
-    <td className="xl104"></td>
+
       </tr>*/}
         </tbody>{" "}
       </table>

@@ -40,7 +40,7 @@ class FooterMegaMenu extends React.Component {
         <Nav className="header-megamenu">
           <NavItem>
             <NavLink href="#" onClick={this.toggle} id="PopoverMegaMenuFooter">
-              Footer Menu
+              Menu
               <FontAwesomeIcon className="ms-2 opacity-8" icon={faAngleDown} />
             </NavLink>
           </NavItem>
@@ -107,7 +107,7 @@ class FooterMegaMenu extends React.Component {
               </div>
             </div>
           </Popover>
-          <NavItem>
+          {/* <NavItem>
             <NavLink href="#" onClick={this.toggle2} id="PopoverGridFooter">
               Grid Menu
               <div className="badge bg-dark ms-0 ms-1">
@@ -179,7 +179,7 @@ class FooterMegaMenu extends React.Component {
                 </div>
               </NavItem>
             </Nav>
-          </Popover>
+          </Popover> */}
         </Nav>
       </Fragment>
     );

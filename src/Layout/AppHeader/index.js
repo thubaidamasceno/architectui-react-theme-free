@@ -35,9 +35,9 @@ class Header extends React.Component {
             </div>
             </div>
                   
-            <div className="app-footer-left">
+            {/* <div className="app-footer-left">
               <FooterDots />
-            </div>
+            </div> */}
               </div>
           </CSSTransition>
         </TransitionGroup>
