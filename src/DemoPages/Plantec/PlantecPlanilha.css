@@ -1,7 +1,22 @@
 
+
+.nolateralpadding {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  border: 0.5pt solid black;
+}
+
+#plantecTable{
+table-layout: fixed;
+}
+
 #plantecTable td {
-  padding-left: .3rem !important;
-  padding-right: .2rem !important;
+  /* padding-left: .3rem !important;
+  padding-right: .2rem !important; */
+  padding-left: .3rem ;
+  padding-right: .2rem ;
 }
 
 .xl161 {
@@ -25,7 +40,7 @@
 }
 
 .xl102 {
-  /*mso-style-parent: style16;*/
+  /*célula logo petrobras*/
   color: black;
   font-size: 18pt;
   font-weight: 700;
@@ -34,7 +49,7 @@
   border-top: 1pt solid black;
   border-right: none;
   border-bottom: 0.5pt solid black;
-  border-left: none;
+  border-left: 1pt solid black;
   /*mso-protection: unlocked visible;*/
   white-space: normal;
 }
@@ -73,23 +88,32 @@
 }
 
 .xl253 {
-  /*mso-style-parent: style16;*/
+  /*célula UN-BS*/
   color: #008543;
-  font-size: 14pt;
+  font-size: 11pt;
   font-weight: 700;
   font-style: italic;
   text-align: center;
   vertical-align: middle;
   border-top: 1pt solid black;
-  border-right: none;
+  border-right: 1pt solid black;
   border-bottom: 0.5pt solid black;
   border-left: none;
   /*mso-protection: unlocked visible;*/
 }
 
 .xl106 {
-  /*mso-style-parent: style16;*/
-  font-family: Verdana, sans-serif;
+  /*célula  titulo versão/revisão*/
+  font-family: Verdana, sans-serif; 
+  border-left: 1pt solid black;
+  /*mso-font-charset: 0;*/
+  /*mso-protection: unlocked visible;*/
+}
+
+.xl106c {
+  /*célula conteudo versão/revisão*/
+  font-family: Verdana, sans-serif; 
+  border-right: 1pt solid black;
   /*mso-font-charset: 0;*/
   /*mso-protection: unlocked visible;*/
 }
@@ -131,11 +155,12 @@
   white-space: normal;
 }
 .xl110 {
-  /*mso-style-parent: style16;*/
+  /*célula conteudo nome arquivo*/
   color: black;
   font-weight: 700;
   font-style: italic;
   vertical-align: middle;
+  border-right: 1pt solid black;
   /*mso-protection: unlocked visible;*/
 }
 .xl111 {
@@ -163,7 +188,7 @@
 
 .xl113 {
   /*mso-style-parent: style16;*/
-  font-size: 12pt;
+  font-size: 10pt;
   font-weight: 700;
   text-align: left;
   vertical-align: middle;
@@ -176,7 +201,7 @@
 .xl114 {
   /*mso-style-parent: style0;*/
   color: black;
-  font-size: 12pt;
+  font-size: 10pt;
   font-weight: 700;
   text-align: right;
   vertical-align: middle;
@@ -189,7 +214,7 @@
 .xl115 {
   /*mso-style-parent: style16;*/
   color: black;
-  font-size: 14pt;
+  font-size: 11pt;
   font-weight: 700;
   font-style: italic;
   text-align: center;
@@ -204,7 +229,7 @@
 .xl116 {
   /*mso-style-parent: style16;*/
   color: black;
-  font-size: 14pt;
+  font-size: 11pt;
   font-style: italic;
   text-align: left;
   vertical-align: middle;
@@ -218,7 +243,7 @@
 .xl117 {
   /*mso-style-parent: style16;*/
   color: black;
-  font-size: 14pt;
+  font-size: 11pt;
   font-weight: 700;
   font-style: italic;
   text-align: left;
@@ -246,14 +271,14 @@
 }
 
 .xl263 {
-  /*mso-style-parent: style16;*/
+  /*célula responsável substituto*/
   color: black;
-  font-size: 12pt;
+  font-size: 10pt;
   font-style: italic;
   text-align: center;
   vertical-align: middle;
   border-top: 0.5pt solid black;
-  border-right: none;
+  border-right: 1pt solid black;
   border-bottom: 0.5pt solid black;
   border-left: none;
   /*mso-protection: unlocked visible;*/
@@ -263,7 +288,7 @@
 .xl261 {
   /*mso-style-parent: style0;*/
   color: black;
-  font-size: 14pt;
+  font-size: 11pt;
   font-style: italic;
   text-align: left;
   vertical-align: middle;
@@ -277,7 +302,7 @@
 .xl262 {
   /*mso-style-parent: style16;*/
   color: black;
-  font-size: 12pt;
+  font-size: 10pt;
   font-weight: 700;
   text-align: right;
   vertical-align: middle;
@@ -292,15 +317,32 @@
 .xl258 {
   /*mso-style-parent: style16;*/
   color: black;
-  font-size: 12pt;
+  font-size: 10pt;
   font-weight: 700;
   text-align: left;
   vertical-align: middle;
   border-top: 0.5pt solid black;
-  border-right: none;
+  border-right: 1pt solid black;
   border-bottom: none;
   border-left: 1pt solid black;
   background: #c6e0b4;
+  /*mso-pattern: black none;*/
+  /*mso-protection: unlocked visible;*/
+  white-space: normal;
+}
+
+.fullborder {
+  /*mso-style-parent: style16;*/
+  color: black;
+  font-size: 10pt;
+  font-weight: 700;
+  text-align: left;
+  vertical-align: middle;
+  border-top: 0.5pt solid black;
+  border-right: 0.5pt solid black;
+  border-bottom: 0.5pt solid black;
+  border-left: 0.5pt solid black;
+  /*background: #c6e0b4;*/
   /*mso-pattern: black none;*/
   /*mso-protection: unlocked visible;*/
   white-space: normal;
