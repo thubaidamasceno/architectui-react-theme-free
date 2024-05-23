@@ -6,6 +6,7 @@ import "ag-grid-enterprise/styles/ag-grid.css";
 import "ag-grid-enterprise/styles/ag-theme-balham.css";
 
 const PlantecPlanilha = ({ dados }) => {
+  let printVersion = true;
   return (
     <div
       className="d-flex justify-content-center text-center"
@@ -37,16 +38,16 @@ const PlantecPlanilha = ({ dados }) => {
               align="left"
               valign="top"
               className="xl102"
-              colSpan={16}
+              colSpan={15}
             ><div className="app-logo-petrobras" /></td>
             <td
-              colSpan={16}
+              colSpan={20}
               className="xl255"
             >
               PLANEJAMENTO DE SERVIÇOS
             </td>
             <td
-              colSpan={16}
+              colSpan={13}
               className="xl253"
             >
               UN-BS/ATP-TUPI/MIED
@@ -248,22 +249,22 @@ const PlantecPlanilha = ({ dados }) => {
             >5. MÃO DE OBRA - APOIOS OUTRAS GERÊNCIAS
             </td>
           </tr>
-          {false ?
+          {printVersion ?
             [1, 2].map(a => (
               <tr
                 className="nolateralpadding">{
-                  [["Tipo", 3, "xl263", true],
-                  ["Origem", 3, "xl263", true],
+                  [["Tipo", 4, "xl263", true],
+                  ["Origem", 8, "xl263", true],
                   ["N° prof.", 3, "xl263", true],
                   ["N° dias", 3, "xl263", true],
                   ["HH", 3, "xl263", true],
-                  ["Nota SAP", 3, "xl263", true],
-                  ["Observações", 3, "xl263", true],
+                  ["Nota SAP", 6, "xl263", true],
+                  ["Observações",21, "xl263", true],
                   ].map(b => (<td
                     colSpan={b[1]}
                     contentEditable={a == 2}
                     className={(a == 1) ? "fullborder" : "fullborder"}
-                  >{a == 1 ? b[0] : b[0]}</td>))
+                  >{a == 1 ? b[0] : " "}</td>))
                 }</tr>)) : (<tr ><td
                   colSpan={48}
                   className="nolateralpadding"
@@ -304,28 +305,28 @@ const PlantecPlanilha = ({ dados }) => {
             </td>
           </tr>
 
-          {false ?
+          {printVersion ?
             [1, 2].map(a => (
               <tr>{
                 [
-                  ["FABRICANTE", 3, "xl263", true],
-                  ["PART NUMBER", 3, "xl263", true],
-                  ["NM", 3, "xl263", true],
-                  ["DESCRIÇÃO", 3, "xl263", true],
-                  ["Qtd.", 3, "xl263", true],
-                  ["UN", 3, "xl263", true],
-                  ["Unidade Básica SAP", 3, "xl263", true],
-                  ["Observações", 3, "xl263", true],
+                  ["FABRICANTE", 4, "xl263", true],
+                  ["PART NUMBER", 4, "xl263", true],
+                  ["NM", 4, "xl263", true],
+                  ["DESCRIÇÃO", 8, "xl263", true],
+                  ["Qtd.", 2, "xl263", true],
+                  ["UN", 2, "xl263", true],
+                  ["UMB", 2, "xl263", true],
+                  ["Observações", 10, "xl263", true],
                   ["Impeditivo?", 3, "xl263", true],
-                  ["MIRO?", 3, "xl263", true],
-                  ["Global?", 3, "xl263", true],
-                  ["MRP", 3, "xl263", true],
+                  ["MIRO?", 2, "xl263", true],
+                  ["Global?", 2, "xl263", true],
+                  ["MRP", 2, "xl263", true],
                   ["Checklist", 3, "xl263", true],
                 ].map(b => (<td
                   colSpan={b[1]}
                   contentEditable={a == 2}
                   className={(a == 1) ? "fullborder" : "fullborder"}
-                >{a == 1 ? b[0] : b[0]}</td>))
+                >{a == 1 ? b[0] : " "}</td>))
               }</tr>)) : (<tr><td
                 colSpan={48}
                 className="nolateralpadding">
@@ -396,20 +397,20 @@ const PlantecPlanilha = ({ dados }) => {
             >7. PLANEJAMENTO DE FERRAMENTAS ESPECIAIS E MOVIMENTAÇÃO DE CARGA
             </td>
           </tr>
-          {false ?
+          {printVersion ?
             [1, 2].map(a => (
               <tr>{
-                [["FABRICANTE", 3, "xl263", true],
-                ["KIT", 3, "xl263", true],
-                ["DESCRIÇÃO", 3, "xl263", true],
-                ["LOCALIZAÇÃO", 3, "xl263", true],
+                [["FABRICANTE", 4, "xl263", true],
+                ["KIT", 4, "xl263", true],
+                ["DESCRIÇÃO", 10, "xl263", true],
+                ["LOCALIZAÇÃO", 4, "xl263", true],
                 ["QTD", 3, "xl263", true],
-                ["Observações", 3, "xl263", true],
-                ].map(b => (<td
-                  colSpan={b[1]}
-                  contentEditable={b == 2}
-                  className={(a == 1) ? "fullborder" : "fullborder"}
-                >{a == 1 ? b[0] : " "}</td>))
+                ["Observações",24, "xl263", true],
+              ].map(b => (<td
+                colSpan={b[1]}
+                contentEditable={a == 2}
+                className={(a == 1) ? "fullborder" : "fullborder"}
+              >{a == 1 ? b[0] : " "}</td>))
               }</tr>)) : (<tr><td
                 colSpan={48}
                 className="nolateralpadding">
@@ -447,23 +448,23 @@ const PlantecPlanilha = ({ dados }) => {
             >8. SEQUÊNCIA DE SERVIÇOS DE CAMPO - DESMONTAGEM, MONTAGEM, MANUTENÇÃO, TESTES
             </td>
           </tr>
-          {false ?
+          {printVersion ?
             [1, 2].map(a => (
               <tr>{
                 [
                   ["Tarefa", 3, "xl263", true],
                   ["Etapa Aplat", 3, "xl263", true],
-                  ["Descrição", 3, "xl263", true],
-                  ["Recurso", 3, "xl263", true],
-                  ["Nº Rec.", 3, "xl263", true],
-                  ["Duração", 3, "xl263", true],
-                  ["Unidade", 3, "xl263", true],
-                  ["Relação", 3, "xl263", true],
-                  ["Predec.", 3, "xl263", true],
-                  ["Sucessora", 3, "xl263", true],
+                  ["Descrição", 16, "xl263", true],
+                  ["Recurso", 9, "xl263", true],
+                  ["Nº Rec.", 2, "xl263", true],
+                  ["Duração", 2, "xl263", true],
+                  ["Unidade", 2, "xl263", true],
+                  ["Relação", 4, "xl263", true],
+                  ["Predec.", 4, "xl263", true],
+                  ["Sucessora",4, "xl263", true],
                 ].map(b => (<td
                   colSpan={b[1]}
-                  contentEditable={b == 2}
+                  contentEditable={a == 2}
                   className={(a == 1) ? "fullborder" : "fullborder"}
                 >{a == 1 ? b[0] : " "}</td>))
               }</tr>)) : (<tr><td
